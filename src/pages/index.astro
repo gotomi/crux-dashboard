@@ -6,6 +6,12 @@ let title = 'CrUX Dashboard';
 
 import data from '../_data/crux.json';
 
+function displayHeader(){
+    const urlType = data.params.url ? 'URL' : 'origin';
+    const device = data.params.formFactor  === 'PHONE' ? '📱' : '🖥️';
+    return `<p>${device} ${data.params.formFactor.toLowerCase()}  🌐 ${urlType}  📅 ${data.params.date}</p>`
+}
+
 
 function displayLegend(metric) {
   const metricsMap = {
@@ -70,7 +76,7 @@ let CLS= getMetric(" CLS");
         <header>
             <div>
                 <h1>CrUX Dashboard</h1>
-                <p class="legend"> {JSON.stringify(data.params)}</p>
+                {displayHeader()}
             </div>
         </header>
         <section>
