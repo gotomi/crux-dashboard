@@ -21,7 +21,7 @@ function displayTitle(title, titleArr) {
   <h3> {displayTitle(post.url,["allegro.pl","allegrolokalnie.pl"])}  &nbsp;{post.p75}&nbsp; {rankMap[post.rank]}</h3>
     <ul>
     {post.histogram.map((item,index) => (
-        <li class={rank[index]} style={"flex:" + item}>{item}%</li>
+        <li class={rank[index]} style={"flex:" + item}><span>{item}%</span></li>
     ))}
      </ul>
 </div>
@@ -49,8 +49,8 @@ h3{
 
 }
 
-.row:hover{
-    background-color: #ddd;
+.row:hover h3{
+    color: tomato;
 }
 
 ul {
@@ -69,8 +69,24 @@ li{
     text-align: right;
     font-size: 80%;
     margin: 3px 0;
-    
+    text-indent: -999px;
+    overflow: hidden; 
 }
+
+
+
+.row:hover li:hover{
+   overflow: initial;
+}
+
+.row:hover li:hover span{
+   text-shadow: 1px 1px #000;
+   background: #000;
+   color: #fff;
+   padding: 3px;
+   border-radius: 3px;
+}
+
 
 /* li:first-child{
     border-radius: 5px  0 0 5px;
