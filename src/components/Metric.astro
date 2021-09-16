@@ -1,0 +1,96 @@
+---
+export interface Props {
+  post: any;
+}
+
+const { post } = Astro.props;
+const rank = ["good", "average", "poor"]
+
+const rankMap = {
+    "good" : " 🟢 ",
+    "average" :" 🟠 ",
+    "poor" : " 🔴 "
+}
+
+function displayTitle(title, titleArr) {
+    return titleArr.includes(title) ? `<strong>${title}</strong>` : title;
+}
+
+---
+<div class="row">
+  <h3> {displayTitle(post.url,["allegro.pl","allegrolokalnie.pl"])}  &nbsp;{post.p75}&nbsp; {rankMap[post.rank]}</h3>
+    <ul>
+    {post.histogram.map((item,index) => (
+        <li class={rank[index]} style={"flex:" + item}>{item}%</li>
+    ))}
+     </ul>
+</div>
+
+<style>
+
+
+
+h3{
+    font-weight: 400;
+    font-size: inherit;
+    padding: 0 15px;
+    text-align: right;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-self: end;
+    justify-content: end;
+    margin: 3px 0;
+}
+
+.row{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+
+}
+
+.row:hover{
+    background-color: #ddd;
+}
+
+ul {
+    display: flex;
+
+
+
+}
+ul, li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+li{
+    padding: 5px;
+    text-align: right;
+    font-size: 80%;
+    margin: 3px 0;
+    
+}
+
+/* li:first-child{
+    border-radius: 5px  0 0 5px;
+} */
+li:last-child{
+    border-radius: 0 5px 5px 0;
+}
+
+
+.good{
+    background-color: #34A853;
+}
+
+.average {
+    background-color: #FBBC04;
+}
+
+.poor {
+    background-color: #EA4335;
+    color: #fff
+}
+
+</style>

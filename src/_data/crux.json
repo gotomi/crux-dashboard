@@ -1,0 +1,537 @@
+{
+    "params": {
+        "formFactor": "PHONE",
+        "origin": true,
+        "date": "16.09.2021"
+    },
+    "metrics": [
+        {
+            "url": "https://allegro.pl",
+            " CLS": {
+                "histogram": [
+                    94.99,
+                    3.66,
+                    1.35
+                ],
+                "p75": "0.01",
+                "rank": "good"
+            },
+            "uCLS": {
+                "histogram": [
+                    94.73,
+                    3.67,
+                    1.61
+                ],
+                "p75": "0.01",
+                "rank": "good"
+            },
+            " FCP": {
+                "histogram": [
+                    90.83,
+                    6.48,
+                    2.68
+                ],
+                "p75": 1211,
+                "rank": "good"
+            },
+            " FID": {
+                "histogram": [
+                    93.92,
+                    5.12,
+                    0.96
+                ],
+                "p75": 41,
+                "rank": "good"
+            },
+            " LCP": {
+                "histogram": [
+                    91.95,
+                    5.41,
+                    2.65
+                ],
+                "p75": 1538,
+                "rank": "good"
+            }
+        },
+        {
+            "url": "https://m.ceneo.pl",
+            " CLS": {
+                "histogram": [
+                    74.81,
+                    17.26,
+                    7.93
+                ],
+                "p75": "0.10",
+                "rank": "good"
+            },
+            "uCLS": {
+                "histogram": [
+                    67.39,
+                    21.49,
+                    11.12
+                ],
+                "p75": "0.13",
+                "rank": "average"
+            },
+            " FCP": {
+                "histogram": [
+                    79.11,
+                    15.71,
+                    5.18
+                ],
+                "p75": 1673,
+                "rank": "good"
+            },
+            " FID": {
+                "histogram": [
+                    88.15,
+                    8.81,
+                    3.04
+                ],
+                "p75": 32,
+                "rank": "good"
+            },
+            " LCP": {
+                "histogram": [
+                    73.24,
+                    16.83,
+                    9.93
+                ],
+                "p75": 2603,
+                "rank": "average"
+            }
+        },
+        {
+            "url": "https://www.mediaexpert.pl",
+            " CLS": {
+                "histogram": [
+                    67.98,
+                    17.57,
+                    14.45
+                ],
+                "p75": "0.13",
+                "rank": "average"
+            },
+            "uCLS": {
+                "histogram": [
+                    58.57,
+                    22.71,
+                    18.71
+                ],
+                "p75": "0.18",
+                "rank": "average"
+            },
+            " FCP": {
+                "histogram": [
+                    65.52,
+                    19.48,
+                    15
+                ],
+                "p75": 2339,
+                "rank": "average"
+            },
+            " FID": {
+                "histogram": [
+                    81.09,
+                    11.18,
+                    7.73
+                ],
+                "p75": 61,
+                "rank": "good"
+            },
+            " LCP": {
+                "histogram": [
+                    66.88,
+                    20.6,
+                    12.52
+                ],
+                "p75": 2970,
+                "rank": "average"
+            }
+        },
+        {
+            "url": "https://m.euro.com.pl",
+            " CLS": {
+                "histogram": [
+                    81.36,
+                    9.26,
+                    9.38
+                ],
+                "p75": "0.03",
+                "rank": "good"
+            },
+            "uCLS": {
+                "histogram": [
+                    81.16,
+                    8.85,
+                    9.99
+                ],
+                "p75": "0.03",
+                "rank": "good"
+            },
+            " FCP": {
+                "histogram": [
+                    79.35,
+                    14.27,
+                    6.38
+                ],
+                "p75": 1638,
+                "rank": "good"
+            },
+            " FID": {
+                "histogram": [
+                    93.26,
+                    5.64,
+                    1.1
+                ],
+                "p75": 18,
+                "rank": "good"
+            },
+            " LCP": {
+                "histogram": [
+                    81.43,
+                    13.07,
+                    5.49
+                ],
+                "p75": 2178,
+                "rank": "good"
+            }
+        },
+        {
+            "url": "https://www.empik.com",
+            " CLS": {
+                "histogram": [
+                    44.8,
+                    25.26,
+                    29.94
+                ],
+                "p75": "0.34",
+                "rank": "poor"
+            },
+            "uCLS": {
+                "histogram": [
+                    42.42,
+                    23.48,
+                    34.1
+                ],
+                "p75": "0.42",
+                "rank": "poor"
+            },
+            " FCP": {
+                "histogram": [
+                    78.78,
+                    15.11,
+                    6.11
+                ],
+                "p75": 1689,
+                "rank": "good"
+            },
+            " FID": {
+                "histogram": [
+                    89.35,
+                    6.6,
+                    4.05
+                ],
+                "p75": 32,
+                "rank": "good"
+            },
+            " LCP": {
+                "histogram": [
+                    50.13,
+                    25.96,
+                    23.92
+                ],
+                "p75": 3925,
+                "rank": "average"
+            }
+        },
+        {
+            "url": "https://www.doz.pl",
+            " CLS": {
+                "histogram": [
+                    96.24,
+                    2.14,
+                    1.62
+                ],
+                "p75": "0.03",
+                "rank": "good"
+            },
+            "uCLS": {
+                "histogram": [
+                    95.94,
+                    2.33,
+                    1.73
+                ],
+                "p75": "0.03",
+                "rank": "good"
+            },
+            " FCP": {
+                "histogram": [
+                    84.37,
+                    10.7,
+                    4.93
+                ],
+                "p75": 1413,
+                "rank": "good"
+            },
+            " FID": {
+                "histogram": [
+                    96.49,
+                    2.85,
+                    0.65
+                ],
+                "p75": 32,
+                "rank": "good"
+            },
+            " LCP": {
+                "histogram": [
+                    89.98,
+                    6.88,
+                    3.14
+                ],
+                "p75": 1712,
+                "rank": "good"
+            }
+        },
+        {
+            "url": "https://www.eobuwie.com.pl",
+            " CLS": {
+                "histogram": [
+                    28.03,
+                    25.13,
+                    46.84
+                ],
+                "p75": "0.36",
+                "rank": "poor"
+            },
+            "uCLS": {
+                "histogram": [
+                    26.64,
+                    21.44,
+                    51.92
+                ],
+                "p75": "0.45",
+                "rank": "poor"
+            },
+            " FCP": {
+                "histogram": [
+                    79.01,
+                    16.43,
+                    4.56
+                ],
+                "p75": 1683,
+                "rank": "good"
+            },
+            " FID": {
+                "histogram": [
+                    93.87,
+                    5.06,
+                    1.07
+                ],
+                "p75": 20,
+                "rank": "good"
+            },
+            " LCP": {
+                "histogram": [
+                    56.49,
+                    25.37,
+                    18.15
+                ],
+                "p75": 3501,
+                "rank": "average"
+            }
+        },
+        {
+            "url": "https://www.amazon.pl",
+            " CLS": {
+                "histogram": [
+                    74.03,
+                    18.83,
+                    7.14
+                ],
+                "p75": "0.10",
+                "rank": "good"
+            },
+            "uCLS": {
+                "histogram": [
+                    73.28,
+                    18.79,
+                    7.93
+                ],
+                "p75": "0.10",
+                "rank": "good"
+            },
+            " FCP": {
+                "histogram": [
+                    86.15,
+                    9.56,
+                    4.29
+                ],
+                "p75": 1360,
+                "rank": "good"
+            },
+            " FID": {
+                "histogram": [
+                    96.03,
+                    3.33,
+                    0.64
+                ],
+                "p75": 20,
+                "rank": "good"
+            },
+            " LCP": {
+                "histogram": [
+                    90.45,
+                    6.74,
+                    2.81
+                ],
+                "p75": 1664,
+                "rank": "good"
+            }
+        },
+        {
+            "url": "https://m.aliexpress.com",
+            " CLS": {
+                "histogram": [
+                    89.97,
+                    7.19,
+                    2.84
+                ],
+                "p75": "0.04",
+                "rank": "good"
+            },
+            "uCLS": {
+                "histogram": [
+                    88.29,
+                    8.18,
+                    3.53
+                ],
+                "p75": "0.04",
+                "rank": "good"
+            },
+            " FCP": {
+                "histogram": [
+                    86.34,
+                    8.36,
+                    5.3
+                ],
+                "p75": 1170,
+                "rank": "good"
+            },
+            " FID": {
+                "histogram": [
+                    95.05,
+                    4.14,
+                    0.81
+                ],
+                "p75": 27,
+                "rank": "good"
+            },
+            " LCP": {
+                "histogram": [
+                    78.09,
+                    13.23,
+                    8.69
+                ],
+                "p75": 2323,
+                "rank": "good"
+            }
+        },
+        {
+            "url": "https://www.castorama.pl",
+            " CLS": {
+                "histogram": [
+                    47.92,
+                    16.6,
+                    35.48
+                ],
+                "p75": "0.47",
+                "rank": "poor"
+            },
+            "uCLS": {
+                "histogram": [
+                    42.97,
+                    17.45,
+                    39.58
+                ],
+                "p75": "0.65",
+                "rank": "poor"
+            },
+            " FCP": {
+                "histogram": [
+                    60.47,
+                    25.35,
+                    14.18
+                ],
+                "p75": 2357,
+                "rank": "average"
+            },
+            " FID": {
+                "histogram": [
+                    86.55,
+                    8.07,
+                    5.38
+                ],
+                "p75": 32,
+                "rank": "good"
+            },
+            " LCP": {
+                "histogram": [
+                    42.05,
+                    28.6,
+                    29.35
+                ],
+                "p75": 4361,
+                "rank": "poor"
+            }
+        },
+        {
+            "url": "https://allegrolokalnie.pl",
+            " CLS": {
+                "histogram": [
+                    83.34,
+                    11.26,
+                    5.4
+                ],
+                "p75": "0.06",
+                "rank": "good"
+            },
+            "uCLS": {
+                "histogram": [
+                    82.17,
+                    12.1,
+                    5.72
+                ],
+                "p75": "0.06",
+                "rank": "good"
+            },
+            " FCP": {
+                "histogram": [
+                    86.92,
+                    9.04,
+                    4.04
+                ],
+                "p75": 1345,
+                "rank": "good"
+            },
+            " FID": {
+                "histogram": [
+                    94.26,
+                    4.17,
+                    1.57
+                ],
+                "p75": 18,
+                "rank": "good"
+            },
+            " LCP": {
+                "histogram": [
+                    71.85,
+                    18.99,
+                    9.16
+                ],
+                "p75": 2683,
+                "rank": "average"
+            }
+        }
+    ]
+}
