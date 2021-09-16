@@ -8,20 +8,19 @@ import data from '../_data/crux.json';
 
 
 function displayLegend(metric) {
-  const metricsRanges = {
-    'CLS': [0.1, 0.25],
-    'FCP': [1800, 3000], 
-    'FID': [100, 300],
-    'LCP': [2500, 4000]
+  const metricsMap = {
+    'CLS': {range : [0.1, 0.25], name : "Cumulative Layout Shift"},
+    'FCP': {range :[1800, 3000], name : "First Contentful Paint"},
+    'FID': {range :[100, 300], name : "First Input Delay"},
+    'LCP': {range :[2500, 4000], name : "Largest Contentful Paint"}
 };
 
-    const range = metricsRanges[metric];
-
+    const metricData = metricsMap[metric];
     const unit = metric === "CLS" ? '' : 'ms'
 
     const legend =  `
-    <h2>${metric}</h2>
-    <p class="legend">🟢 good (< ${range[0]} ${unit}) 🟠 average 🔴 poor (> ${range[1]} ${unit})</p> 
+    <h2>${metricData.name}</h2>
+    <p class="legend">🟢 good (< ${metricData.range[0]} ${unit}) 🟠 average 🔴 poor (> ${metricData.range[1]} ${unit})</p> 
     `;
     return legend
 
