@@ -1,0 +1,65 @@
+---
+export interface Props {
+  post: any;
+}
+
+const { table } = Astro.props;
+const rank = ["good", "average", "poor"]
+
+const rankMap = {
+    "good" : " 🟢 ",
+    "average" :" 🟠 ",
+    "poor" : " 🔴 "
+}
+
+
+
+function displayTitle(title, titleArr) {
+    return titleArr.includes(title) ? `<strong>${title}</strong>` : title;
+}
+
+---
+<table>
+        {table.map((row) => (
+        <tr>
+                {row.map((cell) => (        
+             <td class={cell.rank ? cell.rank : ''}>{cell.p75 ? cell.p75 : displayTitle(cell,["allegro.pl","allegrolokalnie.pl"])}</td>
+        )
+        )}
+        </tr>
+    ))}
+</table>
+
+<style>
+
+    table {
+        width: 100%;
+    }
+    tr:first-child td{
+        background: #333;
+        color: #fff;
+        font-weight: bold;
+    }
+    table, tr, td {
+        border: 1px solid #aaa;
+        border-collapse: collapse;
+        padding: 10px
+    }
+    td{
+        padding: 10px 20px;
+    }
+
+
+.good{
+    background-color: #34A85385;
+}
+
+.average {
+    background-color: #FBBC0485;
+}
+
+.poor {
+    background-color: #EA433590;
+}
+
+</style>
