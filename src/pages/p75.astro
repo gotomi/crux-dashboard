@@ -1,9 +1,9 @@
 ---
 // Component Imports
-import Metric from '../components/Metric.astro';
+import Table from '../components/Table.astro';
 import Nav from '../components/Nav.astro';
 
-let title = 'CrUX Dashboard - distribution';
+let title = 'CrUX Dashboard - p75';
 
 import data from '../_data/crux.json';
 
@@ -29,36 +29,23 @@ function displayLegend(metric) {
     <p class="legend">🟢 good (< ${metricData.range[0]} ${unit}) 🟠 needs improvement 🔴 poor (> ${metricData.range[1]} ${unit})</p> `;
 }
 
-function compareByDistribution(a,b) {
-            const x = a.histogram[0];
-        const y = b.histogram[0];
-        if (y < x ) return -1
-        if (x > y ) return 1
-        return 0;
-}
 
 
-function compareByP75(a,b) {
-        const y = a.p75
-        const x = b.p75;
-        if (y < x ) return -1
-        if (x > y ) return 1
-        return 0;
-}
 
-
-function getMetric(metric) {
+function getMetric() {
     return data.metrics.map(item => {
-    let obj = item[metric];
-    obj.url = item.url.replace("https://","");
+    let obj = [];
+    obj.push(item.url.replace("https://",""));
+    obj.push({p75:item[" FCP"].p75, rank: item[" FCP"].rank});
+    obj.push({p75:item[" LCP"].p75, rank: item[" LCP"].rank});
+        obj.push({p75:item[" FID"].p75, rank: item[" FID"].rank});
+            obj.push({p75:item[" CLS"].p75, rank: item[" CLS"].rank});
+    
         return obj
-    }).sort(compareByDistribution);
-}
+    })
 
-let FCP = getMetric(" FCP");
-let LCP = getMetric(" LCP");
-let FID = getMetric(" FID");
-let CLS= getMetric(" CLS");
+}
+const table = [["url", "FCP", "LCP", "FID", "CLS"]].concat(getMetric());
 ---
 <html lang="en">
 <head>
@@ -79,20 +66,7 @@ let CLS= getMetric(" CLS");
         </header>
         <section>
             <article>
-            {displayLegend('FCP')}
-            {FCP.map(p => <Metric post={p} />)}
-            </article>
-            <article>
-          {displayLegend('LCP')}
-            {LCP.map(p => <Metric post={p} />)}
-            </article>
-            <article>
-            {displayLegend('FID')}
-            {FID.map(p => <Metric post={p} />)}
-            </article>
-            <article>
-           {displayLegend('CLS')}
-            {CLS.map(p => <Metric post={p} />)}
+                      <Table table={table}/>
             </article>
         </section>
     </main>
