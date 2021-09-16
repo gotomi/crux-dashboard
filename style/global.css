@@ -14,10 +14,13 @@ body {
   padding: 4rem 2rem;
   width: 100%;
   min-height: 100vh;
-  /* display: grid; */
+  display: grid;
   justify-content: center;
   background: #f9fafb;
   color: #111827;
+}
+header{
+  margin: 0 0 50px 0;
 }
 
 @media (prefers-color-scheme: dark) {
