@@ -18,12 +18,9 @@ function displayLegend(metric) {
     const metricData = metricsMap[metric];
     const unit = metric === "CLS" ? '' : 'ms'
 
-    const legend =  `
+    return `
     <h2>${metricData.name}</h2>
-    <p class="legend">🟢 good (< ${metricData.range[0]} ${unit}) 🟠 average 🔴 poor (> ${metricData.range[1]} ${unit})</p> 
-    `;
-    return legend
-
+    <p class="legend">🟢 good (< ${metricData.range[0]} ${unit}) 🟠 needs improvement 🔴 poor (> ${metricData.range[1]} ${unit})</p> `;
 }
 
 
@@ -55,7 +52,6 @@ function getMetric(metric) {
     }).sort(compareByDistribution);
 }
 
-// const metrics = [" FCP", " LCP", " FID", " CLS"]
 let FCP = getMetric(" FCP");
 let LCP = getMetric(" LCP");
 let FID = getMetric(" FID");
