@@ -4,10 +4,29 @@ import Metric from '../components/Metric.astro';
 
 let title = 'CrUX Dashboard';
 
-
-
-
 import data from '../_data/crux.json';
+
+
+function displayLegend(metric) {
+  const metricsRanges = {
+    'CLS': [0.1, 0.25],
+    'FCP': [1800, 3000], 
+    'FID': [100, 300],
+    'LCP': [2500, 4000]
+};
+
+    const range = metricsRanges[metric];
+
+    const unit = metric === "CLS" ? '' : 'ms'
+
+    const legend =  `
+    <h2>${metric}</h2>
+    <p class="legend">🟢 good (< ${range[0]} ${unit}) 🟠 average 🔴 poor (> ${range[1]} ${unit})</p> 
+    `;
+    return legend
+
+}
+
 
 
 
@@ -50,35 +69,33 @@ let CLS= getMetric(" CLS");
     <title>{title}</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="/style/global.css">
-
-    <style>
-
-
-        hr{
-            width: 100%;
-            margin: 30px 0;
-            border: 0;
-            border-bottom: 1px solid #ccc;
-        }
-    </style>
 </head>
 <body>
     <main>
         <header>
             <div>
                 <h1>CrUX Dashboard</h1>
+                <p class="legend"> {JSON.stringify(data.params)}</p>
             </div>
         </header>
         <section>
-
-             {FCP.map(p => <Metric post={p} />)}
-            <hr>
-             {LCP.map(p => <Metric post={p} />)}
-            <hr>
-             {FID.map(p => <Metric post={p} />)}
-            <hr>
-             {CLS.map(p => <Metric post={p} />)}
-             </section>
+            <article>
+            {displayLegend('FCP')}
+            {FCP.map(p => <Metric post={p} />)}
+            </article>
+            <article>
+          {displayLegend('LCP')}
+            {LCP.map(p => <Metric post={p} />)}
+            </article>
+            <article>
+            {displayLegend('FID')}
+            {FID.map(p => <Metric post={p} />)}
+            </article>
+            <article>
+           {displayLegend('CLS')}
+            {CLS.map(p => <Metric post={p} />)}
+            </article>
+        </section>
     </main>
 </body>
 </html>
