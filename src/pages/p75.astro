@@ -1,74 +1,39 @@
 ---
+import Layout from '../layouts/Layout.astro'
+
 // Component Imports
+import Header from '../components/Header.astro';
 import Table from '../components/Table.astro';
-import Nav from '../components/Nav.astro';
 
 let title = 'CrUX Dashboard - p75';
 
 import data from '../_data/crux.json';
 
-function displayHeader(){
-    const urlType = data.params.url ? 'URL' : 'origin';
-    const device = data.params.formFactor  === 'PHONE' ? '📱' : '🖥️';
-    return `<p>${device} ${data.params.formFactor.toLowerCase()}  🌐 ${urlType}  📅 ${data.params.date}</p>`
-}
-
-function displayLegend(metric) {
-  const metricsMap = {
-    'CLS': {range : [0.1, 0.25], name : "Cumulative Layout Shift"},
-    'FCP': {range :[1800, 3000], name : "First Contentful Paint"},
-    'FID': {range :[100, 300], name : "First Input Delay"},
-    'LCP': {range :[2500, 4000], name : "Largest Contentful Paint"}
-};
-
-    const metricData = metricsMap[metric];
-    const unit = metric === "CLS" ? '' : 'ms'
-
-    return `
-    <h2>${metricData.name}</h2>
-    <p class="legend">🟢 good (< ${metricData.range[0]} ${unit}) 🟠 needs improvement 🔴 poor (> ${metricData.range[1]} ${unit})</p> `;
-}
-
-
-
-
 function getMetric() {
     return data.metrics.map(item => {
     let obj = [];
-    obj.push(item.url.replace("https://",""));
-    obj.push({p75:item[" FCP"].p75, rank: item[" FCP"].rank});
-    obj.push({p75:item[" LCP"].p75, rank: item[" LCP"].rank});
-        obj.push({p75:item[" FID"].p75, rank: item[" FID"].rank});
-            obj.push({p75:item[" CLS"].p75, rank: item[" CLS"].rank});
-    
-        return obj
+    obj.push({url: item.url.replace("https://",""), minimal:0});
+    [" FCP", " LCP", " FID", " CLS"].forEach(metric => {
+         obj.push({p75:item[metric].p75, rank: item[metric].rank});
+    })
+    return obj
     })
 
 }
 const table = [["url", "FCP", "LCP", "FID", "CLS"]].concat(getMetric());
 ---
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <title>{title}</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/style/global.css">
-</head>
-<body>
- <Nav></Nav>
+<Layout title = {title}>
     <main>
         <header>
             <div>
                 <h1>{title}</h1>
-                {displayHeader()}
+                <Header params={data.params}/>
             </div>
         </header>
         <section>
             <article>
-                      <Table table={table}/>
+                <Table table={table}/>
             </article>
         </section>
     </main>
-</body>
-</html>
+</Layout>

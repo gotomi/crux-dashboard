@@ -1,7 +1,10 @@
 ---
+import Layout from '../layouts/Layout.astro'
+
 // Component Imports
 import Metric from '../components/Metric.astro';
-import Nav from '../components/Nav.astro';
+import Legend from '../components/Legend.astro';
+import Header from '../components/Header.astro';
 
 let title = 'CrUX Dashboard - distribution';
 
@@ -13,21 +16,6 @@ function displayHeader(){
     return `<p>${device} ${data.params.formFactor.toLowerCase()}  🌐 ${urlType}  📅 ${data.params.date}</p>`
 }
 
-function displayLegend(metric) {
-  const metricsMap = {
-    'CLS': {range : [0.1, 0.25], name : "Cumulative Layout Shift"},
-    'FCP': {range :[1800, 3000], name : "First Contentful Paint"},
-    'FID': {range :[100, 300], name : "First Input Delay"},
-    'LCP': {range :[2500, 4000], name : "Largest Contentful Paint"}
-};
-
-    const metricData = metricsMap[metric];
-    const unit = metric === "CLS" ? '' : 'ms'
-
-    return `
-    <h2>${metricData.name}</h2>
-    <p class="legend">🟢 good (< ${metricData.range[0]} ${unit}) 🟠 needs improvement 🔴 poor (> ${metricData.range[1]} ${unit})</p> `;
-}
 
 function compareByDistribution(a,b) {
             const x = a.histogram[0];
@@ -60,41 +48,31 @@ let LCP = getMetric(" LCP");
 let FID = getMetric(" FID");
 let CLS= getMetric(" CLS");
 ---
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <title>{title}</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/style/global.css">
-</head>
-<body>
- <Nav></Nav>
+<Layout title={title}>
     <main>
         <header>
             <div>
                 <h1>{title}</h1>
-                {displayHeader()}
+                <Header params={data.params}/>
             </div>
         </header>
         <section>
             <article>
-            {displayLegend('FCP')}
+            <Legend metric="FCP"/>
             {FCP.map(p => <Metric post={p} />)}
             </article>
             <article>
-          {displayLegend('LCP')}
+          <Legend metric="LCP"/>
             {LCP.map(p => <Metric post={p} />)}
             </article>
             <article>
-            {displayLegend('FID')}
+           <Legend metric="FID"/>
             {FID.map(p => <Metric post={p} />)}
             </article>
             <article>
-           {displayLegend('CLS')}
+           <Legend metric="CLS"/>
             {CLS.map(p => <Metric post={p} />)}
             </article>
         </section>
     </main>
-</body>
-</html>
+</Layout>

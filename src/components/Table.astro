@@ -3,7 +3,13 @@ export interface Props {
   post: any;
 }
 
+import UrlWithIcon from '../components/UrlWithIcon.astro';
+import MetricCell from '../components/MetricCell.astro';
+
 const { table } = Astro.props;
+
+const tableHeading = table[0];
+
 const rank = ["good", "average", "poor"]
 
 const rankMap = {
@@ -11,25 +17,27 @@ const rankMap = {
     "average" :" 🟠 ",
     "poor" : " 🔴 "
 }
-
-
-
-function displayTitle(title, titleArr) {
-    return titleArr.includes(title) ? `<strong>${title}</strong>` : title;
-}
-
 ---
 <table>
-        {table.map((row) => (
+
+
+
         <tr>
-                {row.map((cell) => (        
-             <td class={cell.rank ? cell.rank : ''}>{cell.p75 ? cell.p75 : displayTitle(cell,["allegro.pl","allegrolokalnie.pl"])}</td>
+            {tableHeading.map((cell) => (        
+                <td>{cell}</td>
+        )
+        )}
+        </tr>
+
+{table.slice(1,table.length).map((row) => (
+        <tr>
+            {row.map((cell) => (        
+                cell.p75 ? <MetricCell metric={cell}/> : <td><UrlWithIcon url={cell.url}/> {cell.minimal}</td>
         )
         )}
         </tr>
     ))}
 </table>
-
 <style>
 
     table {
@@ -45,21 +53,9 @@ function displayTitle(title, titleArr) {
         border-collapse: collapse;
         padding: 10px
     }
-    td{
-        padding: 10px 20px;
-    }
 
 
-.good{
-    background-color: #34A85385;
-}
 
-.average {
-    background-color: #FBBC0485;
-}
 
-.poor {
-    background-color: #EA433590;
-}
 
 </style>
