@@ -1,0 +1,14 @@
+---
+export interface Props {
+  params: any;
+}
+const { params } = Astro.props;
+
+const urlType = params.url ? 'URL' : 'origin';
+const device = params.formFactor  === 'PHONE' ? '📱' : '🖥️';
+
+
+---
+<p>{device} {params.formFactor.toLowerCase()}  🌐 {urlType}  📅 {params.date}</p>
+
+

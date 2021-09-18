@@ -1,0 +1,48 @@
+---
+// src/layouts/BaseLayout.astro
+const {title} = Astro.props;
+
+---
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{title}</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/style/global.css">
+</head>
+  <body>
+    <!-- Adds a navigation bar to every page. -->
+    <nav>
+        <ul>
+            <li><a href="/">distribution</a></li>
+            <li><a href="/p75">p75</a></li>
+        </ul>
+    </nav>
+    <!-- slot: your page content will be injected here. -->
+    <slot />
+  </body>
+</html>
+
+
+<style>
+nav ul,li{
+    list-style: none;
+}
+
+nav li{
+    display: inline-block;
+    margin:0 10px
+}
+
+nav ul {
+    background: #000;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+nav a{
+    color: #fff;
+}
+</style>

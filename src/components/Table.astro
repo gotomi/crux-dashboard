@@ -3,33 +3,29 @@ export interface Props {
   post: any;
 }
 
+import UrlWithIcon from '../components/UrlWithIcon.astro';
+import MetricCell from '../components/MetricCell.astro';
+
 const { table } = Astro.props;
-const rank = ["good", "average", "poor"]
-
-const rankMap = {
-    "good" : " 🟢 ",
-    "average" :" 🟠 ",
-    "poor" : " 🔴 "
-}
-
-
-
-function displayTitle(title, titleArr) {
-    return titleArr.includes(title) ? `<strong>${title}</strong>` : title;
-}
-
+const tableHeading = table[0];
 ---
 <table>
-        {table.map((row) => (
         <tr>
-                {row.map((cell) => (        
-             <td class={cell.rank ? cell.rank : ''}>{cell.p75 ? cell.p75 : displayTitle(cell,["allegro.pl","allegrolokalnie.pl"])}</td>
+            {tableHeading.map((cell) => (        
+                <td>{cell}</td>
+        )
+        )}
+        </tr>
+
+{table.slice(1,table.length).map((row) => (
+        <tr>
+            {row.map((cell) => (        
+                cell.p75 ? <MetricCell metric={cell}/> : <td><UrlWithIcon url={cell.url}/> <div class="all-good"><div style={"width:" + cell.minimal + "%"}>{cell.minimal}% </div></div></td>
         )
         )}
         </tr>
     ))}
 </table>
-
 <style>
 
     table {
@@ -41,25 +37,17 @@ function displayTitle(title, titleArr) {
         font-weight: bold;
     }
     table, tr, td {
-        border: 1px solid #aaa;
+        border: 1px solid #ddd;
         border-collapse: collapse;
         padding: 10px
     }
-    td{
-        padding: 10px 20px;
+    .all-good{
+        background-color: #ddd;
+        font-size: 60%;
     }
-
-
-.good{
-    background-color: #34A85385;
-}
-
-.average {
-    background-color: #FBBC0485;
-}
-
-.poor {
-    background-color: #EA433590;
-}
-
+    .all-good div{
+        background-color: #34A853;
+        padding: 1px 3px;
+        color: #000;
+    }
 </style>

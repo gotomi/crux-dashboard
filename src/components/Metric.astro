@@ -2,6 +2,7 @@
 export interface Props {
   post: any;
 }
+import UrlWithIcon from '../components/UrlWithIcon.astro';
 
 const { post } = Astro.props;
 const rank = ["good", "average", "poor"]
@@ -12,13 +13,9 @@ const rankMap = {
     "poor" : " 🔴 "
 }
 
-function displayTitle(title, titleArr) {
-    return titleArr.includes(title) ? `<strong>${title}</strong>` : title;
-}
-
 ---
 <div class="row">
-  <h3> {displayTitle(post.url,["allegro.pl","allegrolokalnie.pl"])}  &nbsp;{post.p75}&nbsp; {rankMap[post.rank]}</h3>
+  <h3> <UrlWithIcon url={post.url}/>  &nbsp;{post.p75}&nbsp; {rankMap[post.rank]}</h3>
     <ul>
     {post.histogram.map((item,index) => (
         <li class={rank[index]} style={"flex:" + item}><span>{item}%</span></li>

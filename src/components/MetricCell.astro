@@ -1,0 +1,28 @@
+---
+export interface Props {
+  metric: any;
+}
+const { metric } = Astro.props;
+---
+<td class={metric.rank}>{metric.p75}</td> 
+
+<style>
+.good{
+    background-color: #34A85385;
+}
+
+.average {
+    background-color: #FBBC0485;
+}
+
+.poor {
+    background-color: #EA433590;
+}
+td{
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+</style>
+
+
