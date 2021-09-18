@@ -23,17 +23,16 @@ header{
   margin: 0 0 50px 0;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   body {
     background: #111827;
     color: #fff;
   }
-}
+} */
 
 article {
   width: 100%;
   padding: 30px 0;
-  border: 0;
   border-bottom: 1px solid #ccc;
 }
 .legend{

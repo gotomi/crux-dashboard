@@ -7,21 +7,9 @@ import UrlWithIcon from '../components/UrlWithIcon.astro';
 import MetricCell from '../components/MetricCell.astro';
 
 const { table } = Astro.props;
-
 const tableHeading = table[0];
-
-const rank = ["good", "average", "poor"]
-
-const rankMap = {
-    "good" : " 🟢 ",
-    "average" :" 🟠 ",
-    "poor" : " 🔴 "
-}
 ---
 <table>
-
-
-
         <tr>
             {tableHeading.map((cell) => (        
                 <td>{cell}</td>
@@ -32,7 +20,7 @@ const rankMap = {
 {table.slice(1,table.length).map((row) => (
         <tr>
             {row.map((cell) => (        
-                cell.p75 ? <MetricCell metric={cell}/> : <td><UrlWithIcon url={cell.url}/> {cell.minimal}</td>
+                cell.p75 ? <MetricCell metric={cell}/> : <td><UrlWithIcon url={cell.url}/> <div class="all-good"><div style={"width:" + cell.minimal + "%"}>{cell.minimal}% </div></div></td>
         )
         )}
         </tr>
@@ -49,13 +37,17 @@ const rankMap = {
         font-weight: bold;
     }
     table, tr, td {
-        border: 1px solid #aaa;
+        border: 1px solid #ddd;
         border-collapse: collapse;
         padding: 10px
     }
-
-
-
-
-
+    .all-good{
+        background-color: #ddd;
+        font-size: 60%;
+    }
+    .all-good div{
+        background-color: #34A853;
+        padding: 1px 3px;
+        color: #000;
+    }
 </style>
