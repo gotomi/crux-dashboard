@@ -6,7 +6,7 @@ const { url } = Astro.props;
 const icon = "https://www.google.com/s2/favicons?sz=16&domain_url=" + url.replace('https://','');
 
 function displayTitle(title, titleArr) {
-    return titleArr.includes(title) ? `<strong>${title}</strong>` : title;
+    return titleArr.includes(title.split('/')[0]) ? `<strong>${title}</strong>` : title;
 }
 
 ---

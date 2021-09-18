@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+// Component Imports
+import Metric from '../components/Metric.astro';
+import Legend from '../components/Legend.astro';
+import Header from '../components/Header.astro';
+
+let title = 'CrUX Dashboard - distribution';
+
+import data from '../_data/crux-home.json';
+
+function displayHeader(){
+    const urlType = data.params.url ? 'URL' : 'origin';
+    const device = data.params.formFactor  === 'PHONE' ? '📱' : '🖥️';
+    return `<p>${device} ${data.params.formFactor.toLowerCase()}  🌐 ${urlType}  📅 ${data.params.date}</p>`
+}
+
+
+function compareByDistribution(a,b) {
+            const x = a.histogram[0];
+        const y = b.histogram[0];
+        if (y < x ) return -1
+        if (x > y ) return 1
+        return 0;
+}
+
+
+function getMetric(metric) {
+    return data.metrics.map(item => {
+    let obj = item[metric];
+    obj.url = item.url.replace("https://","");
+        return obj
+    }).sort(compareByDistribution);
+}
+
+let FCP = getMetric(" FCP");
+let LCP = getMetric(" LCP");
+let FID = getMetric(" FID");
+let CLS= getMetric(" CLS");
+---
+<Layout title={title}>
+    <main>
+        <header>
+            <div>
+                <h1>{title}</h1>
+                <Header params={data.params}/>
+            </div>
+        </header>
+        <section>
+            <article>
+            <Legend metric="FCP"/>
+            {FCP.map(p => <Metric post={p} />)}
+            </article>
+            <article>
+          <Legend metric="LCP"/>
+            {LCP.map(p => <Metric post={p} />)}
+            </article>
+            <article>
+           <Legend metric="FID"/>
+            {FID.map(p => <Metric post={p} />)}
+            </article>
+            <article>
+           <Legend metric="CLS"/>
+            {CLS.map(p => <Metric post={p} />)}
+            </article>
+        </section>
+    </main>
+</Layout>
