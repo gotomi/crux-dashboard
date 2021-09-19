@@ -10,6 +10,6 @@
   },
   "devDependencies": {
     "astro": "^0.20.6",
-    "kruk": "^0.2.2"
+    "kruk": "^0.2.3"
   }
 }
