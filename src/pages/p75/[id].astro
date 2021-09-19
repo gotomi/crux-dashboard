@@ -1,0 +1,38 @@
+---
+import fs from 'node:fs/promises';
+
+import Layout from '$layouts/Layout.astro'
+
+// Component Imports
+
+import UrlsByMetric from '$components/UrlsByMetric.astro';
+import Header from '$components/Header.astro';
+
+let title = 'CrUX Dashboard - p75';
+
+export async function getStaticPaths() {
+  return [
+    { params: { id: 'origin' } },
+    { params: { id: 'home' } },
+  ];
+}
+const {id} = Astro.request.params;
+
+const url = new URL(`../../_data/crux-${id}.json`, import.meta.url);
+const json = await fs.readFile(url, 'utf-8');
+const data = JSON.parse(json);
+
+---
+<Layout title = {title}>
+    <main>
+        <header>
+            <div>
+                <h1>{title}</h1>
+                <Header params={data.params}/>
+            </div>
+        </header>
+        <section>
+                <UrlsByMetric data={data}/>
+        </section>
+    </main>
+</Layout>

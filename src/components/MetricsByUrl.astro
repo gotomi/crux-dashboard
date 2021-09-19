@@ -1,0 +1,32 @@
+---
+export interface Props {
+  data: any;
+}
+import Metric from '../components/Metric.astro';
+import Legend from '../components/Legend.astro';
+const { data } = Astro.props;
+
+function compareByDistribution(a,b) {
+        const x = a.histogram[0];
+        const y = b.histogram[0];
+        if (y < x ) return -1
+        if (x > y ) return 1
+        return 0;
+}
+
+
+function getMetric(data, metric) {
+    return data.metrics.map(item => {
+    let obj = item[metric];
+    obj.url = item.url.replace("https://","");
+        return obj
+    }).sort(compareByDistribution);
+}
+
+---
+            {["FCP","LCP","FID","CLS"].map(metric => (
+            <article>
+                <Legend metric={metric}/>
+                {getMetric(data, metric).map(p => <Metric post={p} />)}
+                </article>
+            ))}

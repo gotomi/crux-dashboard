@@ -12,16 +12,17 @@ const {title} = Astro.props;
     <link rel="stylesheet" href="/style/global.css">
 </head>
   <body>
-    <!-- Adds a navigation bar to every page. -->
-    <nav>
-        <ul>
-            <li><a href="/">distribution (origin)</a></li>
-            <li><a href="/home">distribution (home page)</a></li>
-            <li><a href="/p75">p75 (origin)</a></li>
-            <li><a href="/home-p75">p75 (home page)</a></li>
-        </ul>
+     <nav>
+     <ul>
+        {["origin", "home"].map(item => (
+            <li><a href={"/distribution/" + item}> {"distribution " + item}</a></li>
+        ))}
+        {["origin", "home"].map(item => (
+            <li><a href={"/p75/" + item}>{"p75 " + item}</a></li>
+        ))}
+    </ul>
     </nav>
-    <!-- slot: your page content will be injected here. -->
+
     <slot />
   </body>
 </html>
