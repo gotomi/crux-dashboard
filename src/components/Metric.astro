@@ -15,7 +15,7 @@ const rankMap = {
 
 ---
 <div class="row">
-  <h3> <UrlWithIcon url={post.url}/>  &nbsp;{post.p75}&nbsp; {rankMap[post.rank]}</h3>
+  <h3> <UrlWithIcon url={post.url}/>  <span class="p75">&nbsp;{post.p75}&nbsp; {rankMap[post.rank]}</span></h3>
     <ul>
     {post.histogram.map((item,index) => (
         <li class={rank[index]} style={"flex:" + item}><span>{item}%</span></li>
@@ -35,7 +35,7 @@ h3{
     border-bottom: 1px solid #ccc;
     display: flex;
     align-self: end;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: baseline;
     margin: 3px 0;
 }
@@ -72,7 +72,6 @@ ul, li{
 li{
     padding: 5px;
     text-align: right;
-    font-size: 80%;
     margin: 3px 0;
     text-indent: -999px;
     overflow: hidden; 
@@ -92,6 +91,9 @@ li{
    border-radius: 3px;
 }
 
+.p75{
+    width: 60px;
+}
 
 /* li:first-child{
     border-radius: 5px  0 0 5px;

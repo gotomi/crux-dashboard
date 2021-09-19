@@ -19,4 +19,16 @@ const { metric } = Astro.props;
   🟢 good (&lt; {metricData.range[0]} {unit}) 🟠 needs improvement 🔴 poor (&gt; {metricData.range[1]} {unit})
 </p>
 
+<style>
+.legend{
+  text-align: right;
+  padding: 10px 0;
+}
 
+@media (max-width: 1022px) { 
+    .legend{
+        text-align: left;
+        font-size: 80%;
+    }
+}
+</style>
