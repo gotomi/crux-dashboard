@@ -37,6 +37,11 @@ jobs:
         PSIKUS: ${{ secrets.PSIKUS }} 
     - run: npm run build
     - run: touch dist/.nojekyll
+    - name: Commit & Push changes
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        message: 'crux data ${date}'
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
