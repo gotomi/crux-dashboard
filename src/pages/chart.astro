@@ -1,0 +1,119 @@
+---
+
+import Layout from '$layouts/Layout.astro'
+const title = 'Chart';
+
+---
+<Layout title = {title}>
+    <main>
+        <header>
+            <div>
+                <h1>{title}</h1>
+            </div>
+        </header>
+        <section>
+
+        <h2>Origin</h2>
+        <div id="chart" class="chart"></div>
+        <h2>Main Page</h2>
+        <div id="chart-home" class="chart"></div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+      <script>
+
+        var options = {
+          series: [
+          {
+            name: "High - 2013",
+            data: [28, 29, 33, 36, 32, 32, 33]
+          }
+        ],
+          chart: {
+          height: 450,
+          type: 'line',
+          dropShadow: {
+            enabled: false,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        // colors: ['#77B6EA', '#545454'],
+        dataLabels: {
+          enabled: true,
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+          text: 'Metrics',
+          align: 'left'
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            // colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+          categories: [],
+          title: {
+            text: ''
+          }
+        },
+
+        legend: {
+          position: 'bottom',
+          horizontalAlign: 'left',
+          // floating: true,
+          // offsetY: -25,
+          offsetX: -5
+        }
+        };
+
+
+function createChart(dataUrl, selector) {
+  fetch(dataUrl) 
+  .then(response => response.json())
+  .then(data =>{
+    Object.keys(data).forEach(metric => {
+        options.series = data[metric].series;
+       options.xaxis.categories = data[metric].categories;
+       options.title.text = metric
+
+   
+        const div = document.createElement('div');
+         const chart = new ApexCharts(div, options);
+         document.querySelector(selector).appendChild(div);
+        chart.render();
+    })
+  });
+}
+
+
+createChart('data/crux-origin-all.json','#chart')
+createChart('data/crux-home-all.json','#chart-home')
+
+
+
+       
+               </script>
+        </section>
+    </main>
+</Layout>
+
+<style>
+.chart{
+  min-width: 1000px;
+}
+</style>
