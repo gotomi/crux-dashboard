@@ -37,11 +37,14 @@ jobs:
         PSIKUS: ${{ secrets.PSIKUS }} 
     - run: npm run build
     - run: touch dist/.nojekyll
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
     - name: Commit & Push changes
       uses: actions-js/push@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        message: crux-data-${{ date }}
+        message: crux-data-${{ steps.date.outputs.date }}
         branch: 'master'
 
     - name: Deploy
