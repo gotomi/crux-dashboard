@@ -37,6 +37,10 @@ jobs:
         PSIKUS: ${{ secrets.PSIKUS }} 
     - run: npm run build
     - run: touch dist/.nojekyll
+    - name: get current crux
+      run: npm install -g kruk && kruk --key $PSIKUS --file src/_urls/ecommerce.json --checkOrigin --output json > src/_data/crux-origin.json
+      env:
+        PSIKUS: ${{ secrets.PSIKUS }} 
     - name: Commit & Push changes
       uses: actions-js/push@master
       with:
