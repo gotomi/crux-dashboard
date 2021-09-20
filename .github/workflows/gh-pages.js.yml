@@ -26,6 +26,16 @@ jobs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
+    
+    - name: get current crux
+      run: npm install -g kruk && kruk --key $PSIKUS --file src/_urls/ecommerce.json --checkOrigin --output json > src/_data/crux-origin.json
+      env:
+        PSIKUS: ${{ secrets.PSIKUS }} 
+    - name: Commit & Push changes
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        message: 'crux data ${date}'
 
     - run: npm ci
     - run: npm install -g kruk
@@ -37,15 +47,6 @@ jobs:
         PSIKUS: ${{ secrets.PSIKUS }} 
     - run: npm run build
     - run: touch dist/.nojekyll
-    - name: get current crux
-      run: npm install -g kruk && kruk --key $PSIKUS --file src/_urls/ecommerce.json --checkOrigin --output json > src/_data/crux-origin.json
-      env:
-        PSIKUS: ${{ secrets.PSIKUS }} 
-    - name: Commit & Push changes
-      uses: actions-js/push@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        message: 'crux data ${date}'
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
