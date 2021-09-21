@@ -10,6 +10,8 @@
   },
   "devDependencies": {
     "astro": "^0.20.6",
-    "kruk": "^0.2.3"
+    "kruk": "^0.2.3",
+    "apexcharts": "^3.28.3",
+    "react-apexcharts": "^1.3.9"
   }
 }

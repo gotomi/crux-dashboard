@@ -95,5 +95,5 @@ function prepareEmptyDataForChart(data) {
 
 
 
-createOrUpdateDataChart('public/data/crux-origin-all.json', 'src/_data/crux-origin.json');
-createOrUpdateDataChart('public/data/crux-home-all.json', 'src/_data/crux-home.json')
+createOrUpdateDataChart('src/data-chart/crux-origin-all.json', 'src/_data/crux-origin.json');
+createOrUpdateDataChart('src/data-chart/crux-home-all.json', 'src/_data/crux-home.json')
