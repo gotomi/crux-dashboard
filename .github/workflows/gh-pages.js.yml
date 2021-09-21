@@ -29,8 +29,12 @@ jobs:
 
     - run: npm ci
     - run: npm install -g kruk
-    - run: kruk --key ${{ secrets.PSIKUS }} --file src/_urls/ecommerce.json --checkOrigin --output json > src/_data/crux-origin.json
-    - run: kruk --key ${{ secrets.PSIKUS }} --file src/_urls/ecommerce.json --output json > src/_data/crux-home.json
+    - run: kruk --key $PSIKUS --file src/_urls/ecommerce.json --checkOrigin --output json > src/_data/crux-origin.json
+      env:
+        PSIKUS: ${{ secrets.PSIKUS }}
+    - run: kruk --key $PSIKUS --file src/_urls/ecommerce.json --output json > src/_data/crux-home.json
+      env:
+        PSIKUS: ${{ secrets.PSIKUS }}
     - run: node createOrUpdateDataChart.mjs
     - run: npm run build
     - run: touch dist/.nojekyll
