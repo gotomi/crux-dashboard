@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Chart</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="stylesheet" href="/style/global.css"><link rel="stylesheet" href="/_astro/chart/index-Z25B3G1.css" type="text/css"><link rel="stylesheet" href="/_astro/common-1n7snT.css" type="text/css"></head><body><nav class="astro-ugDx17xj"><ul class="astro-ugDx17xj"><li class="astro-ugDx17xj"><a href="/distribution/origin" class="astro-ugDx17xj">distribution origin</a></li><li class="astro-ugDx17xj"><a href="/distribution/home" class="astro-ugDx17xj">distribution home</a></li><li class="astro-ugDx17xj"><a href="/p75/origin" class="astro-ugDx17xj">p75 origin</a></li><li class="astro-ugDx17xj"><a href="/p75/home" class="astro-ugDx17xj">p75 home</a></li></ul></nav><main class="astro-pPoSk5F0"><header class="astro-pPoSk5F0"><div class="astro-pPoSk5F0"><h1 class="astro-pPoSk5F0">Chart</h1></div></header><section class="astro-pPoSk5F0"><h2 class="astro-pPoSk5F0">Origin</h2><div id="chart" class="chart astro-pPoSk5F0"></div><h2 class="astro-pPoSk5F0">Main Page</h2><div id="chart-home" class="chart astro-pPoSk5F0"></div><script src="https://cdn.jsdelivr.net/npm/apexcharts"></script><script>
+
+        var options = {
+          series: [
+          {
+            name: "High - 2013",
+            data: [28, 29, 33, 36, 32, 32, 33]
+          }
+        ],
+          chart: {
+          height: 450,
+          type: 'line',
+          dropShadow: {
+            enabled: false,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        // colors: ['#77B6EA', '#545454'],
+        dataLabels: {
+          enabled: true,
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+          text: 'Metrics',
+          align: 'left'
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            // colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+          categories: [],
+          title: {
+            text: ''
+          }
+        },
+
+        legend: {
+          position: 'bottom',
+          horizontalAlign: 'left',
+          // floating: true,
+          // offsetY: -25,
+          offsetX: -5
+        }
+        };
+
+
+function createChart(dataUrl, selector) {
+  fetch(dataUrl) 
+  .then(response => response.json())
+  .then(data =>{
+    Object.keys(data).forEach(metric => {
+        options.series = data[metric].series;
+       options.xaxis.categories = data[metric].categories;
+       options.title.text = metric
+
+   
+        const div = document.createElement('div');
+         const chart = new ApexCharts(div, options);
+         document.querySelector(selector).appendChild(div);
+        chart.render();
+    })
+  });
+}
+
+
+createChart('data/crux-origin-all.json','#chart')
+createChart('data/crux-home-all.json','#chart-home')
+
+
+
+       
+               </script></section></main></body></html>
