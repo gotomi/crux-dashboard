@@ -28,11 +28,11 @@ jobs:
           ${{ runner.os }}-node-
 
     - run: npm ci
-    - run: npm install -g kruk
-    - run: kruk --key $PSIKUS --file src/_urls/ecommerce.json --checkOrigin --output json > src/_data/crux-origin.json
+    # - run: npm install -g kruk
+    - run: ./node_modules/kruk/index.js --key $PSIKUS --file src/_urls/ecommerce.json --checkOrigin --output json > src/_data/crux-origin.json
       env:
         PSIKUS: ${{ secrets.PSIKUS }}
-    - run: kruk --key $PSIKUS --file src/_urls/ecommerce.json --output json > src/_data/crux-home.json
+    - run: ./node_modules/kruk/index.js --key $PSIKUS --file src/_urls/ecommerce.json --output json > src/_data/crux-home.json
       env:
         PSIKUS: ${{ secrets.PSIKUS }}
     # - run: node createOrUpdateDataChart.mjs
