@@ -35,7 +35,7 @@ jobs:
     - run: ./node_modules/kruk/index.js --key $PSIKUS --file src/_urls/ecommerce.json --output json > src/_data/crux-home.json
       env:
         PSIKUS: ${{ secrets.PSIKUS }}
-    # - run: node createOrUpdateDataChart.mjs
+    - run: node createOrUpdateDataChart.mjs
     - run: npm run build
     - run: touch dist/.nojekyll
     - name: Get current date
