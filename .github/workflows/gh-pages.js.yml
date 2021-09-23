@@ -3,9 +3,6 @@ name: github pages
 on:
   push:
     branches: [ master ]
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '0 7 * * *'
 
 jobs:
   deploy:
@@ -28,25 +25,8 @@ jobs:
           ${{ runner.os }}-node-
 
     - run: npm ci
-    # - run: npm install -g kruk
-    - run: ./node_modules/kruk/index.js --key $PSIKUS --file src/_urls/ecommerce.json --checkOrigin --output json > src/_data/crux-origin.json
-      env:
-        PSIKUS: ${{ secrets.PSIKUS }}
-    - run: ./node_modules/kruk/index.js --key $PSIKUS --file src/_urls/ecommerce.json --output json > src/_data/crux-home.json
-      env:
-        PSIKUS: ${{ secrets.PSIKUS }}
-    - run: node createOrUpdateDataChart.mjs
     - run: npm run build
     - run: touch dist/.nojekyll
-    - name: Get current date
-      id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
-    - name: Commit & Push changes
-      uses: actions-js/push@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        message: crux-data-${{ steps.date.outputs.date }}
-        branch: 'master'
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
