@@ -46,7 +46,7 @@ const title = 'Chart';
         {
           originData.map(state => (
             <>
-            <App {...{state: state}} client:only/>
+            <App {...{state: state}} client:only="react"/>
             <hr />
             </>
           ))
@@ -55,7 +55,7 @@ const title = 'Chart';
         {
           homeData.map(state => (
           <>
-            <App {...{state: state}} client:only/>
+            <App {...{state: state}} client:only="react"/>
             <hr />
             </>
           ))
