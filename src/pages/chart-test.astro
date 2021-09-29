@@ -1,0 +1,58 @@
+---
+import ChartCSS from "../components/ChartCSS.svelte";
+
+import ChartSVG from "../components/ChartSVG.svelte";
+import Layout from '$layouts/Layout.astro'
+import data from '../_data/ass-monthly.json';
+function prepareData(data) {
+let allOptions = [];
+    Object.keys(data).forEach((metric, i) => {
+       let state = { 
+         series : data[metric].series,
+         options : {
+           xaxis : {
+             categories :data[metric].categories
+           },
+           title: {
+             text :metric
+           },
+          markers: {
+            size: 1
+          },
+          dataLabels: {
+            enabled: true,
+          }
+         }
+       };
+      allOptions.push(state)
+    })
+    return allOptions
+}
+
+
+const title = 'ASS Chart';
+
+---
+<Layout title = {title}>
+    <main>
+        <header>
+            <div>
+                <h1>{title}</h1>
+            </div>
+        </header>
+        <section>
+          <ChartSVG chartdata={data} client:load/>
+          <ChartCSS  chartdata={data} client:load/>
+        </section>
+    </main>
+</Layout>
+<style>
+h2{
+  margin: 0 0 30px 0;
+}
+hr{
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  margin: 50px 0;
+}
+</style>
