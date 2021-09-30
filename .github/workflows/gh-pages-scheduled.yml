@@ -3,7 +3,7 @@ name: updata data scheduled
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 7 * * *'
+    - cron:  '0 8 * * *'
 
 jobs:
   deploy:
@@ -26,10 +26,10 @@ jobs:
           ${{ runner.os }}-node-
 
     - run: npm ci
-    - run: ./node_modules/kruk/index.js --key $PSIKUS --file src/_urls/ecommerce.json --checkOrigin --output json > src/_data/crux-origin.json
+    - run: ./node_modules/kruk/bin/index.js --key $PSIKUS --file src/_urls/ecommerce.json --checkOrigin --output json > src/_data/crux-origin.json
       env:
         PSIKUS: ${{ secrets.PSIKUS }}
-    - run: ./node_modules/kruk/index.js --key $PSIKUS --file src/_urls/ecommerce.json --output json > src/_data/crux-home.json
+    - run: ./node_modules/kruk/bin/index.js --key $PSIKUS --file src/_urls/ecommerce.json --output json > src/_data/crux-home.json
       env:
         PSIKUS: ${{ secrets.PSIKUS }}
     - run: node createOrUpdateDataChart.mjs
