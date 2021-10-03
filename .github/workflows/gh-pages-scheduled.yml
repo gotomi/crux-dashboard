@@ -3,7 +3,7 @@ name: updata data scheduled
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '30 7 * * *'
+    - cron:  '0 7 * * *'
 
 jobs:
   deploy:
