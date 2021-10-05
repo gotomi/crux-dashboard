@@ -1,0 +1,24 @@
+---
+import Layout from '$layouts/Layout.astro'
+import data from '../_data/crux-origin.json'
+
+// Component Imports
+import MetricsByUrl from '$components/MetricsByUrl.svelte';
+import Header from '$components/Header.svelte';
+
+let title = 'CrUX Dashboard - distribution';
+
+---
+<Layout title = {title}>
+    <main>
+        <header>
+            <div>
+                <h1>{title}</h1>
+                <Header data={data}/>
+            </div>
+        </header>
+        <section>
+                <MetricsByUrl data={data}/>
+        </section>
+    </main>
+</Layout>

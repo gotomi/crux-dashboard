@@ -1,5 +1,7 @@
 <script>
     export let data;
+    import UrlWithIcon from './UrlWithIcon.svelte';
+
     function imgIcon(url) {
         return (
             "https://www.google.com/s2/favicons?sz=16&domain_url=" +
@@ -70,18 +72,7 @@
                     <td class={cell.rank}>{cell.p75}</td>
                 {:else}
                     <td>
-                        <img
-                            src={imgIcon(cell.url)}
-                            class="icon"
-                            width="12"
-                            height="12"
-                            alt={cell.url}
-                        />
-                        {#if titleArr.includes(cell.url.split("/"))}
-                            <strong title={cell.url}>{cell.url}</strong>
-                        {:else}
-                            <span title={cell.url}>{cell.url}</span>
-                        {/if}
+                        <UrlWithIcon url={cell.url}/>
                         <div class="all-good">
                             <div style={"width:" + cell.minimal + "%"}>
                                 {cell.minimal}%
