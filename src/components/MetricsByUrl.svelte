@@ -19,6 +19,7 @@
             })
             .sort(compareByDistribution);
     }
+    
 </script>
 
 {#each ["FCP", "LCP", "FID", "CLS"] as metric}

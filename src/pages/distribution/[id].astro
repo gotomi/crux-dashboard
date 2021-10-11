@@ -16,13 +16,13 @@ const files = await fs.readdir(dataDir, 'utf-8');
 let pages = files.filter(item => {
     return item.indexOf('.json') > -1
   }).map(item => {
-    return {params: {'id': item.split('-')[1].split('.json')[0]}}  // crux-origin.json => origin
+    return {params: {'id': item.split('.json')[0]}}  // crux-origin.json => origin
   });
   return pages;
 }
 const {id} = Astro.request.params;
 
-const url = new URL(`../../_data/crux-${id}.json`, import.meta.url);
+const url = new URL(`../../_data/${id}.json`, import.meta.url);
 const json = await fs.readFile(url, 'utf-8');
 const data = JSON.parse(json);
 
