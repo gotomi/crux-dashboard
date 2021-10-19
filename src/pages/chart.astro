@@ -3,6 +3,7 @@ import App from "../components/Chart.jsx";
 import Layout from '$layouts/Layout.astro'
 import dataOrigin from '../data-chart/crux-origin-all.json';
 import dataHome from '../data-chart/crux-home-all.json';
+
 function prepareData(data) {
 let allOptions = [];
     Object.keys(data).forEach((metric, i) => {
@@ -23,6 +24,7 @@ let allOptions = [];
           }
          }
        };
+      state.series = state.series.filter( it => ['allegro.pl/','allegrolokalnie.pl/'].includes(it.name));
       allOptions.push(state)
     })
     return allOptions
