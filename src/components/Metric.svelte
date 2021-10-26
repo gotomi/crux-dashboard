@@ -85,7 +85,7 @@
     }
 
     .p75 {
-        width: 60px;
+        width: 65px;
     }
 
     /* li:first-child{
