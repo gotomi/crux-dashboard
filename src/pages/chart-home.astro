@@ -1,7 +1,8 @@
 ---
 import App from "../components/Chart.jsx";
 import Layout from '$layouts/Layout.astro'
-import dataOrigin from '../data-chart/crux-origin-all.json';
+
+import dataHome from '../data-chart/crux-home-all.json';
 
 function prepareData(data) {
 let allOptions = [];
@@ -28,7 +29,8 @@ let allOptions = [];
     return allOptions
 }
 
-const originData =  prepareData(dataOrigin)
+const homeData = prepareData(dataHome)
+
 
 const title = 'Chart';
 
@@ -41,15 +43,16 @@ const title = 'Chart';
             </div>
         </header>
         <section>
-        <h2>Origin</h2>
+        <h2>Home</h2>
         {
-          originData.map(state => (
+          homeData.map(state => (
          <div>
             <App {...{state: state}} client:only="react"/>
             <hr />
             </div>
           ))
         }
+
         </section>
     </main>
 </Layout>
