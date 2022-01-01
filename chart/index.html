@@ -4,11 +4,7 @@
     <title>Chart</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/style/global.css">
-<link rel="stylesheet" href="../assets/chart.585e62bf.css">
-
-<script type="module" src="../assets/chart.6c196c48.js"></script>
-
-
+<link rel="stylesheet" href="../assets/chart.59e80512.css">
 </head>
   <body>
      <nav class="astro-AKNNKON4">
@@ -20,29 +16,37 @@
     </ul>
     </nav>
 
-    <main class="astro-CQ2INSZO">
-        <header class="astro-CQ2INSZO">
-            <div class="astro-CQ2INSZO">
-                <h1 class="astro-CQ2INSZO">Chart</h1>
+    <main class="astro-HL6MWSWL">
+        <header class="astro-HL6MWSWL">
+            <div class="astro-HL6MWSWL">
+                <h1 class="astro-HL6MWSWL">Chart</h1>
             </div>
         </header>
-        <section class="astro-CQ2INSZO">
-        <h2 class="astro-CQ2INSZO">Origin</h2>
-        <div class="astro-CQ2INSZO">
-            <astro-root uid="y3ImW"></astro-root>
-            <hr class="astro-CQ2INSZO">
-            </div><div class="astro-CQ2INSZO">
-            <astro-root uid="y3ImW"></astro-root>
-            <hr class="astro-CQ2INSZO">
-            </div><div class="astro-CQ2INSZO">
-            <astro-root uid="y3ImW"></astro-root>
-            <hr class="astro-CQ2INSZO">
-            </div><div class="astro-CQ2INSZO">
-            <astro-root uid="y3ImW"></astro-root>
-            <hr class="astro-CQ2INSZO">
+        <section class="astro-HL6MWSWL">
+
+  
+         <div class="astro-HL6MWSWL">
+    <div id="wrapper1" class="astro-HL6MWSWL"></div>
+    <div id="wrapper2" class="astro-HL6MWSWL"></div>
+    
             </div>
+       
         </section>
     </main>
   
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/create-chart.js"></script>
+    <script>
+    const wrapper1 = document.getElementById('wrapper1');
+    const wrapper2 = document.getElementById('wrapper2');
+    displayCharts('/data-chart/crux-origin-all.json', 'Origin', wrapper1);
+    displayCharts('/data-chart/crux-home-all.json', 'Home Page',  wrapper2);
+    </script>
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+
 
 </body></html>
