@@ -9,7 +9,8 @@ function createOrUpdateDataChart(file, source) {
 
     //read last crux
 
-    const url = new URL(source, import.meta.url);
+    const url = new URL(source,
+        import.meta.url);
     const json = readFileSync(url, 'utf-8');
     const data = JSON.parse(json);
 
@@ -23,7 +24,8 @@ function createOrUpdateDataChart(file, source) {
             console.log("created");
         } else {
 
-            const url = new URL(file, import.meta.url);
+            const url = new URL(file,
+                import.meta.url);
             const json = readFileSync(url, 'utf-8');
             const allFCP = JSON.parse(json);
 
@@ -95,5 +97,5 @@ function prepareEmptyDataForChart(data) {
 
 
 
-createOrUpdateDataChart('src/data-chart/crux-origin-all.json', 'src/_data/ecommerce-pl-origin.json');
-createOrUpdateDataChart('src/data-chart/crux-home-all.json', 'src/_data/ecommerce-pl-url.json')
+createOrUpdateDataChart('public/data-chart/crux-origin-all.json', 'src/_data/ecommerce-pl-origin.json');
+createOrUpdateDataChart('public/data-chart/crux-home-all.json', 'src/_data/ecommerce-pl-url.json')
