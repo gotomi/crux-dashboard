@@ -14,10 +14,16 @@ const {title} = Astro.props;
   <body>
      <nav>
      <ul>
-        <li><a href="/distribution/ecommerce-pl-origin">distribution origin</a></li>
-        <li><a href="/distribution/ecommerce-pl-url">distribution home</a></li>
-        <li><a href="/p75/ecommerce-pl-origin">p75 origin</a></li>
-        <li><a href="/p75/ecommerce-pl-url">p75 home</a></li>
+        <li><span>distribution</span></li>
+        <li><a href="/distribution/ecommerce-pl-origin">origin (PL)</a></li>
+        <li><a href="/distribution/ecommerce-pl-url">home (PL)</a></li>
+        <li><a href="/distribution/ecommerce-eu-origin">origin (EU)</a></li>
+        <li><a href="/distribution/ecommerce-eu-url">home (EU)</a></li>
+        <li><span>P75</span></li>
+        <li><a href="/p75/ecommerce-pl-origin">origin (PL)</a></li>
+        <li><a href="/p75/ecommerce-pl-url">home (PL)</a></li>
+        <li><a href="/p75/ecommerce-eu-origin">origin (EU)</a></li>
+        <li><a href="/p75/ecommerce-eu-url">home (EU)</a></li>
     </ul>
     </nav>
 
@@ -36,14 +42,18 @@ nav li{
     display: inline-block;
     margin:0 10px
 }
-
+nav span{
+    color: bisque;
+    font-weight: bold;
+}
 nav ul {
     background: #000;
     padding: 5px;
     right: 0;
     top: 0;
 }
-nav a{
+nav a,
+nav li{
     color: #fff;
 }
 </style>
