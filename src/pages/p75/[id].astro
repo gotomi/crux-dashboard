@@ -1,5 +1,7 @@
 ---
 import fs from 'node:fs/promises';
+import path from 'node:path';
+import process from 'node:process';
 import Layout from '$layouts/Layout.astro'
 
 // Component Imports
@@ -10,7 +12,7 @@ let title = 'CrUX Dashboard - p75';
 
 export async function getStaticPaths() {
 
-const dataDir = new URL('../../_data/', import.meta.url);
+const dataDir = path.join(process.cwd(), 'src/_data');
 const files = await fs.readdir(dataDir, 'utf-8');
 
 let pages = files.filter(item => {
@@ -21,7 +23,7 @@ let pages = files.filter(item => {
   return pages;
 }
 const {id} = Astro.request.params;
-const url = new URL(`../../_data/${id}.json`, import.meta.url);
+const url = path.join(process.cwd(), `src/_data/${id}.json`);
 const json = await fs.readFile(url, 'utf-8');
 const data = JSON.parse(json);
 ---
