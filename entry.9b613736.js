@@ -1,0 +1,1 @@
+const a=document.getElementById("wrapper1"),r=document.getElementById("wrapper2");displayCharts("/data-chart/crux-origin-all.json","Origin",a);displayCharts("/data-chart/crux-home-all.json","Home Page",r);
