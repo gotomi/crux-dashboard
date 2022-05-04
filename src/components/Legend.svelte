@@ -6,6 +6,7 @@
     FCP: { range: [1800, 3000], name: "First Contentful Paint" },
     FID: { range: [100, 300], name: "First Input Delay" },
     LCP: { range: [2500, 4000], name: "Largest Contentful Paint" },
+    TTFB: { range: [800, 1800], name: "Time To First Byte" },
   };
 
   const metricData = metricsMap[metric];
