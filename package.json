@@ -1,6 +1,6 @@
 {
-    "name": "@example/starter",
-    "version": "0.1.4",
+    "name": "crux-dashboard",
+    "version": "0.1.5",
     "private": true,
     "scripts": {
         "dev": "astro dev",
@@ -11,6 +11,6 @@
     "devDependencies": {
         "@astrojs/svelte": "^0.1.2",
         "astro": "^1.0.0-beta.23",
-        "kruk": "^0.2.7"
+        "kruk": "^0.2.8"
     }
 }

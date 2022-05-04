@@ -43,7 +43,7 @@
                     url: item.url.replace("https://", ""),
                     minimal: minimal[item.url],
                 });
-                ["FCP", "LCP", "FID", "CLS", "TTFB"].forEach((metric) => {
+                ["FCP", "LCP", "FID", "CLS", "TTFB", "INP"].forEach((metric) => {
                     obj.push({
                         p75: item[metric].p75,
                         rank: item[metric].rank,
@@ -53,7 +53,7 @@
             })
             .sort(compareByMinimal);
     }
-    const table = [["url", "FCP", "LCP", "FID", "CLS","TTFB"]].concat(getMetric());
+    const table = [["url", "FCP", "LCP", "FID", "CLS","TTFB", "INP"]].concat(getMetric());
 
     const tableHeading = table[0];
 </script>
