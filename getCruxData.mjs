@@ -6,7 +6,7 @@ const INPUT = './src/_urls';
 const OUTPUT = './src/_data';
 
 
-const API_KEY = process.env.PSIKUS;
+const API_KEY = 'AIzaSyDaMjUiZ63T2qGH_vQ5drSrNlf6XJ03a0g';
 
 function prependHttp(url, { https = true } = {}) {
     if (typeof url !== 'string') {
