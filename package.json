@@ -9,9 +9,9 @@
         "preview": "astro preview"
     },
     "devDependencies": {
-        "@astrojs/svelte": "^1.0.0",
-        "astro": "^1.2.1",
-        "axios": "^0.27.2",
-        "kruk": "^0.2.11"
+        "@astrojs/svelte": "^1.0.1",
+        "astro": "^1.4.7",
+        "axios": "^1.1.2",
+        "kruk": "^0.2.12"
     }
 }
