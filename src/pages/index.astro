@@ -1,1 +1,51 @@
-<meta http-equiv="refresh" content="0;url=/distribution/ecommerce-pl-origin" />
+---
+import fs from "node:fs/promises";
+import path from "node:path";
+import process from "node:process";
+import Layout from "$layouts/Layout.astro";
+
+const dataDir = path.join(process.cwd(), "src/_data");
+const files = await fs.readdir(dataDir, "utf-8");
+
+let pages = files
+  .filter((item) => {
+    return item.indexOf(".json") > -1;
+  })
+  .map((item) => {
+    return item.split(".json")[0];
+  });
+
+const title = "CrUX Dashboard";
+---
+
+<Layout title={title}>
+  <main>
+    <header>
+      <div>
+        <h1>{title}</h1>
+      </div>
+    </header>
+    <section>
+      <h2>Distribution</h2>
+      <ul>
+        {
+          pages.map((page) => (
+            <li>
+              <a href={"/distribution/" + page}>{page}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <h2>p75</h2>
+      <ul>
+        {
+          pages.map((page) => (
+            <li>
+              <a href={"/p75/" + page}>{page}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</Layout>
