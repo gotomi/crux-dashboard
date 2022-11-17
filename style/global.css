@@ -14,7 +14,8 @@ body {
   padding: 0 2rem;
   width: 100%;
   min-height: 100vh;
-  display: grid;
+  max-width: 1300px;
+  margin: 0 auto;
   justify-content: center;
   background: #f9fafb;
   color: #111827;
