@@ -1,53 +1,99 @@
 ---
+import Charts from "../components/AllCharts.svelte";
+import Layout from "$layouts/Layout.astro";
 
-import Layout from '$layouts/Layout.astro'
-const title = 'Chart';
+import origin from "../../public/data-chart/crux-origin-all.json";
+import home from "../../public/data-chart/crux-home-all.json";
 
----
-<Layout title = {title}>
-    <main>
-        <header>
-            <div>
-                <h1>{title}</h1>
-            </div>
-        </header>
-        <section>
+function prepareData(data) {
+  let allOptions = [];
+  Object.keys(data).forEach((metric, i) => {
+    let state = {
+      series: data[metric].series,
 
-  
-         <div>
-    <div id="wrapper1"></div>
-    <div id="wrapper2"></div>
-    
-            </div>
-       
-        </section>
-    </main>
-</Layout>
+      xaxis: {
+        categories: data[metric].categories,
+      },
+      title: {
+        text: metric,
+        align: "left",
+      },
+      markers: {
+        size: 4,
+      },
+      dataLabels: {
+        enabled: true,
+      },
+      stroke: {
+        curve: "smooth",
+      },
+      chart: {
+        type: "line",
+        height: 900,
+        animations: {
+          enabled: false,
+        },
 
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/create-chart.js" is:inline></script>
-    <script>
-    const wrapper1 = document.getElementById('wrapper1');
-    const wrapper2 = document.getElementById('wrapper2');
-    displayCharts('/data-chart/crux-origin-all.json', 'Origin', wrapper1);
-    displayCharts('/data-chart/crux-home-all.json', 'Home Page',  wrapper2);
-    </script>
-
-  <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
-
-<style>
-
-:global(h2){
-  margin: 50x 0 15px 0;
-  font-size: 30px;
-  }
-
-:global(h3){
-  margin: 15px 0
-  }  
-:global(canvas){
-  margin-bottom: 50px;
+        dropShadow: {
+          enabled: true,
+          color: "#000",
+          top: 18,
+          left: 7,
+          blur: 10,
+          opacity: 0.2,
+        },
+        toolbar: {
+          show: true,
+        },
+      },
+    };
+    allOptions.push(state);
+  });
+  return allOptions;
 }
-</style>
+
+const title = "CrUX Dashboard - chart";
+
+const colorPallete = [
+    "#FF0000",
+    "#800000",
+    "#808000",
+    "#FFA700",
+    "#008000",
+    "#008080",
+    "#0000FF",
+    "#000080",
+    "#FF00FF",
+    "#800080",
+    "#808080",
+    "#000000"
+]
+
+const mapOptions = (option) => {
+  option.xaxis.categories = option.xaxis.categories.slice(-90);
+  option.colors = colorPallete;
+  option.series = option.series.map((item) => {
+    item.data = item.data.slice(-90);
+    return item;
+  });
+  return option;
+};
+
+const chartDataOrigin = prepareData(origin).map(mapOptions);
+
+const chartDataHome = prepareData(home).map(mapOptions);
+---
+
+<Layout title={title}>
+  <main>
+    <header>
+      <div>
+        <h1>{title}</h1>
+      </div>
+    </header>
+    <section>
+      <Charts data={chartDataOrigin} client:only title="Origin" />
+      <Charts data={chartDataHome} client:only title="Home" />
+    </section>
+  </main>
+</Layout>

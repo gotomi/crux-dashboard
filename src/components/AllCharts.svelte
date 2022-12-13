@@ -40,8 +40,9 @@
     background-color: coral;
   }
   div {
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #999;
+    border: 1px solid #ccc9;
+    margin: 30px 0;
+    background: #fcfcfc;
+    padding: 10px;
   }
 </style>

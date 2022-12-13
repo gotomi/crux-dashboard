@@ -1,6 +1,6 @@
 {
     "name": "crux-dashboard",
-    "version": "0.1.7",
+    "version": "0.1.8beta",
     "private": true,
     "scripts": {
         "dev": "astro dev",
@@ -10,9 +10,9 @@
     },
     "devDependencies": {
         "@astrojs/svelte": "^1.0.2",
-        "astro": "^1.6.10",
-        "axios": "^1.1.3",
-        "kruk": "^0.2.13"
+        "astro": "^1.6.15",
+        "axios": "^1.2.1",
+        "kruk": "0.3.0-beta"
     },
     "dependencies": {
         "@astrojs/sitemap": "^1.0.0",
