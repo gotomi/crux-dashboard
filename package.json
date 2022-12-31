@@ -10,9 +10,9 @@
     },
     "devDependencies": {
         "@astrojs/svelte": "^1.0.2",
-        "astro": "^1.6.15",
-        "axios": "^1.2.1",
-        "kruk": "0.3.0-beta"
+        "astro": "^1.8.0",
+        "axios": "^1.2.2",
+        "kruk": "0.3.0"
     },
     "dependencies": {
         "@astrojs/sitemap": "^1.0.0",
