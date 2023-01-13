@@ -9,12 +9,10 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/svelte": "^2.0.0-beta.0",
-    "astro": "^2.0.0-beta.1",
+    "@astrojs/svelte": "^2.0.0-beta.1",
+    "astro": "^2.0.0-beta.2",
     "axios": "^1.2.2",
-    "kruk": "0.3.0"
-  },
-  "dependencies": {
+    "kruk": "0.3.0",
     "@astrojs/sitemap": "^1.0.0",
     "apexcharts": "^3.36.3",
     "svelte-apexcharts": "^1.0.2"
