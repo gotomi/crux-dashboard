@@ -9,9 +9,9 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/svelte": "^2.0.0-beta.3",
-    "astro": "^2.0.0-beta.4",
-    "axios": "^1.2.3",
+    "@astrojs/svelte": "^2.0.0",
+    "astro": "^2.0.1",
+    "axios": "^1.2.4",
     "kruk": "0.3.0",
     "@astrojs/sitemap": "^1.0.0",
     "apexcharts": "^3.36.3",
