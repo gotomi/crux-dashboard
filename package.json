@@ -10,11 +10,11 @@
   },
   "devDependencies": {
     "@astrojs/svelte": "^2.0.1",
-    "astro": "^2.0.4",
-    "axios": "^1.3.0",
+    "astro": "^2.0.10",
+    "axios": "^1.3.2",
     "kruk": "0.3.0",
     "@astrojs/sitemap": "^1.0.1",
-    "apexcharts": "^3.36.3",
+    "apexcharts": "^3.37.0",
     "svelte-apexcharts": "^1.0.2"
   }
 }

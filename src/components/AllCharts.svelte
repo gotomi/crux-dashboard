@@ -11,6 +11,7 @@
 <ul>
   {#each data as item, index}
     <li>
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
       <span
         class={which === index ? "active" : ""}
         on:click={() => (which = index)}>{item.title.text}</span
