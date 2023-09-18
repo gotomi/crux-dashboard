@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@astrojs/svelte": "^4.0.2",
-    "astro": "^3.0.13",
+    "astro": "^3.1.0",
     "axios": "^1.5.0",
     "kruk": "0.3.2",
     "@astrojs/sitemap": "^3.0.0",
