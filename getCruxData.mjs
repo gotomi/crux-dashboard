@@ -6,28 +6,11 @@ const OUTPUT = "./src/_data";
 
 const API_KEY = process.env.PSIKUS;
 
-function prependHttp(url, { https = true } = {}) {
-  if (typeof url !== "string") {
-    throw new TypeError(
-      `Expected \`url\` to be of type \`string\`, got \`${typeof url}\``
-    );
-  }
-
-  url = url.trim();
-
-  if (/^\.*\/|^(?!localhost)\w+?:/.test(url)) {
-    return url;
-  }
-  return url.replace(/^(?!(?:\w+?:)?\/\/)/, https ? "https://" : "http://");
-}
 
 async function getDataAndSaveToFile(file, queryParams) {
   const urlOrOrigin = queryParams.origin ? "origin" : "url";
   const urls = await readFile(path.join(INPUT, file), "utf8");
-  const data = await getCrux(
-    JSON.parse(urls).map((url) => prependHttp(url)),
-    queryParams
-  );
+  const data = await getCrux(JSON.parse(urls), queryParams);
   const fileToWrite = file.split(".json")[0] + "-" + urlOrOrigin + ".json";
   writeFile(path.join(OUTPUT, fileToWrite), JSON.stringify(data));
 }
