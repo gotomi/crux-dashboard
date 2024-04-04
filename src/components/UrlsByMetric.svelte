@@ -9,7 +9,7 @@
     );
   }
 
-  const titleArr = ["allegro.pl", "allegrolokalnie.pl"];
+  const titleArr = [];
 
   function allGoodPercent() {
     const minimal = {};

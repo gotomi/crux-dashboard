@@ -4,7 +4,7 @@ export interface Props {
 }
 const { url } = Astro.props;
 const icon = "https://www.google.com/s2/favicons?sz=16&domain_url=" + url.replace('https://','');
-const titleArr = ["allegro.pl", "allegrolokalnie.pl"];
+const titleArr = [];
 
 function displayTitle(title, titleArr) {
     return titleArr.includes(title.split('/')[0]) ? `<strong>${title}</strong>` : <span>title</span>;
@@ -12,7 +12,6 @@ function displayTitle(title, titleArr) {
 
 ---
 <img src={icon} class="icon" width="12" height="12"/> 
-<!-- {displayTitle(url,["allegro.pl", "allegrolokalnie.pl"])} -->
 {titleArr.includes(url.split('/')[0]) ? <strong title={url}>{url}</strong> : <span title={url}>{url}</span>}
 
 <style>
