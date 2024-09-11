@@ -16,7 +16,7 @@
     data.metrics.forEach((item) => {
       const v = Object.values(item);
       const allMin = v
-        .map((item) => (typeof item === "object" ? item.histogram[0] : 2000))
+        .map((item) => (typeof item === "object" && !!item.histogram[0] ? item.histogram[0] : 2000))
         .reduce((a, b) => Math.min(a, b));
       minimal[item.url] = allMin;
     });
