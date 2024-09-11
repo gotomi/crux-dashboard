@@ -77,7 +77,7 @@ function prepareEmptyDataForChart(data) {
 
     let tmpl = {};
 
-    ["FCP", "LCP", "FID", "CLS","TTFB"].forEach(metric => {
+    ["FCP", "LCP", "INP", "CLS","TTFB"].forEach(metric => {
         tmpl[metric] = {
             "series": [],
             "categories": []
