@@ -1,9 +1,9 @@
 <script>
   import Chart from "./Chart.svelte";
-  export let data;
-  export let title;
-  let which = 0;
-  $: options = data[which];
+  /** @type {{data: any, title: any}} */
+  let { data, title } = $props();
+  let which = $state(0);
+  let options = $derived(data[which]);
 </script>
 
 <h2>{title}</h2>
@@ -11,10 +11,10 @@
 <ul>
   {#each data as item, index}
     <li>
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
       <span
         class={which === index ? "active" : ""}
-        on:click={() => (which = index)}>{item.title.text}</span
+        onclick={() => (which = index)}>{item.title.text}</span
       >
     </li>
   {/each}

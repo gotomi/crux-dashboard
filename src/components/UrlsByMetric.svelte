@@ -1,6 +1,7 @@
 <script>
-  export let data;
   import UrlWithIcon from "./UrlWithIcon.svelte";
+  /** @type {{data: any}} */
+  let { data } = $props();
 
   function imgIcon(url) {
     return (
@@ -59,12 +60,12 @@
 </script>
 
 <table>
+<tbody>
   <tr>
     {#each tableHeading as cell}
       <td>{cell}</td>
     {/each}
   </tr>
-
   {#each table.slice(1, table.length) as row}
     <tr>
       {#each row as cell}
@@ -84,6 +85,7 @@
       <!-- <td class={metric.rank}>{metric.p75}</td>  -->
     </tr>
   {/each}
+  </tbody>
 </table>
 
 <style>

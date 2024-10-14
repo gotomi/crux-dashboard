@@ -1,5 +1,6 @@
 <script>
-  export let metric;
+  /** @type {{metric: any}} */
+  let { metric } = $props();
 
   const metricsMap = {
     CLS: { range: [0.1, 0.25], name: "Cumulative Layout Shift" },

@@ -1,5 +1,6 @@
 <script>
-  export let url;
+  /** @type {{url: any}} */
+  let { url } = $props();
   const icon =
     "https://www.google.com/s2/favicons?sz=16&domain_url=" +
     url.replace("https://", "");
