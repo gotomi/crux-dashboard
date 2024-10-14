@@ -1,7 +1,8 @@
 <script>
-    export let data;
     import Metric from "../components/Metric.svelte";
     import Legend from "../components/Legend.svelte";
+    /** @type {{data: any}} */
+    let { data } = $props();
     function compareByDistribution(a, b) {
         const x = a.histogram[0];
         const y = b.histogram[0];

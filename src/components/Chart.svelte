@@ -1,7 +1,8 @@
 <script>
   import { chart } from "svelte-apexcharts";
 
-  export let options = {
+  /** @type {{options?: any}} */
+  let { options = {
     chart: {
       type: "bar",
     },
@@ -14,7 +15,7 @@
     xaxis: {
       categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
     },
-  };
+  } } = $props();
 </script>
 
-<div use:chart={options} />
+<div use:chart={options}></div>

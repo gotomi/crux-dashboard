@@ -1,6 +1,7 @@
 <script>
-    export let post;
     import UrlWithIcon from "./UrlWithIcon.svelte";
+    /** @type {{post: any}} */
+    let { post } = $props();
 
     const rank = ["good", "average", "poor"];
 
