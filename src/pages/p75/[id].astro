@@ -18,7 +18,7 @@ const files = await fs.readdir(dataDir, 'utf-8');
 let pages = files.filter(item => {
     return item.indexOf('.json') > -1
   }).map(item => {
-    return {params: {'id': item.split('.json')[0]}}  
+    return {params: {'id': item.split('.json')[0]}}
   });
   return pages;
 }
@@ -29,6 +29,7 @@ const data = JSON.parse(json);
 ---
 <Layout title = {title}>
     <main>
+     { data.params  &&
         <header>
             <div>
                 <h1>{title}</h1>
@@ -38,5 +39,6 @@ const data = JSON.parse(json);
         <section>
                 <UrlsByMetric data={data}/>
         </section>
+        }
     </main>
 </Layout>
