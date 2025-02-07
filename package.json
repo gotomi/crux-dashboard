@@ -10,15 +10,15 @@
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/svelte": "^7.0.3",
-    "apexcharts": "^4.3.0",
-    "astro": "^5.1.7",
+    "@astrojs/svelte": "^7.0.4",
+    "apexcharts": "^4.4.0",
+    "astro": "^5.2.5",
     "axios": "^1.7.9",
     "kruk": "0.4.3",
     "svelte-apexcharts": "^1.0.2"
   },
   "dependencies": {
-    "svelte": "^5.18.0",
+    "svelte": "^5.19.9",
     "typescript": "^5.7.3"
   }
 }
