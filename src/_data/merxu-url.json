@@ -1,1 +1,1 @@
-{"params":{"formFactor":"PHONE","url":true,"collectionPeriod":{"firstDate":{"year":2025,"month":1,"day":16},"lastDate":{"year":2025,"month":2,"day":12}},"date":"14.02.2025"},"metrics":[{"url":"merxu.com/pl/","CLS":{"histogram":[89.94,2.69,7.37],"p75":"0.00","rank":"good"},"FCP":{"histogram":[91.27,4.67,4.06],"p75":1455,"rank":"good"},"LCP":{"histogram":[84.44,12.07,3.48],"p75":1982,"rank":"good"},"TTFB":{"histogram":[],"p75":"-","rank":"-"},"INP":{"histogram":[],"p75":"-","rank":"-"},"minimalGood":84.44}]}
+{"error":"data not found"}
