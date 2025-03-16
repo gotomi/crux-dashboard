@@ -61,7 +61,7 @@ function updateCharData(data, dataFromFile) {
 function prepareEmptyDataForChart(data) {
   let tmpl = {};
 
-  ["FCP", "LCP", "INP", "CLS", "TTFB"].forEach((metric) => {
+  ["FCP", "LCP", "INP", "CLS", "TTFB", "RTT"].forEach((metric) => {
     tmpl[metric] = {
       series: [],
       categories: [],
@@ -81,9 +81,9 @@ function prepareEmptyDataForChart(data) {
 
 createOrUpdateDataChart(
   "public/data-chart/crux-origin-all.json",
-  "src/_data/ecommerce-pl-origin.json"
+  "src/_data/ecommerce-pl-origin.json",
 );
 createOrUpdateDataChart(
   "public/data-chart/crux-home-all.json",
-  "src/_data/ecommerce-pl-url.json"
+  "src/_data/ecommerce-pl-url.json",
 );
