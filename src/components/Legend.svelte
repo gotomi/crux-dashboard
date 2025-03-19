@@ -14,12 +14,27 @@
 
     const metricData = metricsMap[metric];
     const unit = metric === "CLS" ? "" : "ms";
+    const names = {
+        metrics: {
+            good: "Good",
+            medium: "Needs Improvement",
+            poor: "Poor",
+        },
+        rtt: {
+            good: "Good",
+            medium: "Medium",
+            poor: "Low",
+        },
+    };
+
+    const rangeNames = metric === "RTT" ? names.rtt : names.metrics;
 </script>
 
 <h2 id={metric}>{metricData.name}</h2>
 <p class="legend">
-    🟢 good (&lt; {metricData.range[0]}
-    {unit}) 🟠 needs improvement 🔴 poor (&gt; {metricData.range[1]}
+    🟢 {rangeNames.good} (&lt; {metricData.range[0]}
+    {unit}) 🟠 {rangeNames.medium} 🔴 {rangeNames.poor} (&gt; {metricData
+        .range[1]}
     {unit})
 </p>
 
