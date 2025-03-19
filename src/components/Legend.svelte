@@ -21,9 +21,9 @@
             poor: "Poor",
         },
         rtt: {
-            good: "Good",
+            good: "Low",
             medium: "Medium",
-            poor: "Low",
+            poor: "High",
         },
     };
 
