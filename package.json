@@ -12,13 +12,13 @@
     "@astrojs/sitemap": "^3.4.1",
     "@astrojs/svelte": "^7.1.0",
     "apexcharts": "^5.3.1",
-    "astro": "^5.12.2",
-    "axios": "^1.10.0",
-    "kruk": "0.4.9",
+    "astro": "^5.12.3",
+    "axios": "^1.11.0",
+    "kruk": "0.4.11",
     "svelte-apexcharts": "^1.0.2"
   },
   "dependencies": {
-    "svelte": "^5.36.13",
+    "svelte": "^5.36.16",
     "typescript": "^5.8.3"
   }
 }
