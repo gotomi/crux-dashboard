@@ -9,16 +9,16 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^3.4.1",
-    "@astrojs/svelte": "^7.1.0",
-    "apexcharts": "^5.3.1",
-    "astro": "^5.12.3",
-    "axios": "^1.11.0",
-    "kruk": "0.4.11",
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/svelte": "^7.2.0",
+    "apexcharts": "^5.3.5",
+    "astro": "^5.14.4",
+    "axios": "^1.12.2",
+    "kruk": "0.4.12",
     "svelte-apexcharts": "^1.0.2"
   },
   "dependencies": {
-    "svelte": "^5.36.16",
-    "typescript": "^5.8.3"
+    "svelte": "^5.39.11",
+    "typescript": "^5.9.3"
   }
 }
