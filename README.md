@@ -1,6 +1,6 @@
 # CrUX Dashboard
 
-A live web performance monitoring dashboard that tracks Core Web Vitals metrics for multiple websites using Chrome User Experience Report (CrUX) data. Live version available at: https://crux.gotomi.info
+A live web performance monitoring dashboard that tracks Core Web Vitals metrics for multiple websites using Chrome User Experience Report (CrUX) data. Live version available at: https://crux-data.gotomi.info
 
 ## Features
 
