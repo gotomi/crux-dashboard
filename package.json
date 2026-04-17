@@ -13,7 +13,7 @@
     "@astrojs/svelte": "^7.2.5",
     "apexcharts": "^5.3.6",
     "astro": "^5.16.10",
-    "axios": "^1.13.2",
+    "axios": "^1.15.0",
     "kruk": "0.4.13",
     "svelte-apexcharts": "^1.0.2"
   },
