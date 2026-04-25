@@ -7,44 +7,268 @@ import Layout from "$layouts/Layout.astro";
 const dataDir = path.join(process.cwd(), "src/_data");
 const files = await fs.readdir(dataDir, "utf-8");
 
-let pages = files
-  .filter((item) => {
-    return item.indexOf(".json") > -1;
-  })
-  .map((item) => {
-    return item.split(".json")[0];
-  });
+const pages = files
+  .filter((item) => item.indexOf(".json") > -1)
+  .map((item) => item.split(".json")[0])
+  .sort();
+
+const groups = pages.reduce((acc, page) => {
+  const base = page.replace(/-origin|-url$/, "");
+  const type = page.endsWith("-origin") ? "origin" : "url";
+  const region = page.replace(/^[a-z]+-/, "").replace(/-origin|-url$/, "");
+  
+  if (!acc[base]) acc[base] = { origin: null, url: null, region };
+  acc[base][type] = page;
+  return acc;
+}, {});
+
+const sites = Object.entries(groups).map(([name, data]) => ({
+  name: name.charAt(0).toUpperCase() + name.slice(1).replace(/-/g, " "),
+  ...data
+}));
 
 const title = "CrUX Dashboard";
 ---
+
 <Layout title={title}>
   <main>
-    <header>
-      <div>
+    <header class="hero">
+      <div class="hero-content">
         <h1>{title}</h1>
+        <p class="subtitle">Chrome User Experience Metrics</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-value">{sites.length}</span>
+          <span class="stat-label">Sites</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">{pages.length}</span>
+          <span class="stat-label">Endpoints</span>
+        </div>
       </div>
     </header>
-    <section>
-      <h2>Distribution</h2>
-      <ul>
-        {
-          pages.map((page) => (
-            <li>
-              <a href={"/distribution/" + page}>{page}</a>
-            </li>
-          ))
-        }
-      </ul>
-      <h2>p75</h2>
-      <ul>
-        {
-          pages.map((page) => (
-            <li>
-              <a href={"/p75/" + page}>{page}</a>
-            </li>
-          ))
-        }
-      </ul>
+
+    <section class="sites-grid">
+      {sites.map((site) => (
+        <article class="site-card">
+          <header class="card-header">
+            <h2>{site.name}</h2>
+            <span class="region-badge">{site.region.toUpperCase()}</span>
+          </header>
+          <div class="card-links">
+            <a href={`/distribution/${site.origin}`} class="link distribution">
+              <span class="link-icon">◐</span>
+              <span class="link-text">
+                <strong>Distribution</strong>
+                <small>origin histogram</small>
+              </span>
+            </a>
+            <a href={`/distribution/${site.url}`} class="link distribution">
+              <span class="link-icon">◑</span>
+              <span class="link-text">
+                <strong>Distribution</strong>
+                <small>URL histogram</small>
+              </span>
+            </a>
+            <a href={`/p75/${site.origin}`} class="link p75">
+              <span class="link-icon">◇</span>
+              <span class="link-text">
+                <strong>P75</strong>
+                <small>origin metrics</small>
+              </span>
+            </a>
+            <a href={`/p75/${site.url}`} class="link p75">
+              <span class="link-icon">◆</span>
+              <span class="link-text">
+                <strong>P75</strong>
+                <small>URL metrics</small>
+              </span>
+            </a>
+          </div>
+        </article>
+      ))}
     </section>
   </main>
 </Layout>
+
+<style>
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--color-border, #e0e0e0);
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-family: "IBM Plex Mono", monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: "IBM Plex Mono", monospace;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #888;
+  }
+
+  .sites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .site-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+    background: #fafafa;
+  }
+
+  .site-card:hover {
+    border-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .card-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .region-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    background: #222;
+    color: #fff;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .card-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+
+  .link.distribution {
+    background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
+    border: 1px solid #e0e0e0;
+  }
+
+  .link.p75 {
+    background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+    border: 1px solid #e0e0e0;
+  }
+
+  .link:hover {
+    border-color: #333;
+  }
+
+  .link-icon {
+    font-size: 1.25rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: #222;
+    color: #fff;
+  }
+
+  .link.distribution .link-icon {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  }
+
+  .link.p75 .link-icon {
+    background: linear-gradient(135deg, #10b981, #059669);
+  }
+
+  .link-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .link-text strong {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #222;
+  }
+
+  .link-text small {
+    font-size: 0.75rem;
+    color: #888;
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
