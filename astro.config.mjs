@@ -1,4 +1,4 @@
-import svelte from '@astrojs/svelte';
+import svelte from "@astrojs/svelte";
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
@@ -8,7 +8,7 @@ export default defineConfig({
   // pages: './src/pages', // Path to Astro components, pages, and data
   // dist: './dist',       // When running `astro build`, path to final static output
   // public: './public',   // A folder of static files Astro will copy to the root. Useful for favicons, images, and other files that don’t need processing.
-  site: 'https://crux.gotomi.info',
+  site: "https://crux-data.gotomi.info",
   // Your public domain, e.g.: https://my-site.dev/. Used to generate sitemaps and canonical URLs.
-  integrations: [svelte(), sitemap()]
+  integrations: [svelte(), sitemap()],
 });
